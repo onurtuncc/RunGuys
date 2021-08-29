@@ -5,7 +5,7 @@ public class SwerveMovement : MonoBehaviour
     private SwerveInputSystem _swerveInputSystem;
     [SerializeField] private float swerveSpeed = 0.5f;
     [SerializeField] private float maxSwerveAmount = 1f;
-
+    [SerializeField] private float forwardSpeed = 5f;
     private void Awake()
     {
         _swerveInputSystem = GetComponent<SwerveInputSystem>();
@@ -15,7 +15,7 @@ public class SwerveMovement : MonoBehaviour
     {
         float swerveAmount = Time.deltaTime * swerveSpeed * _swerveInputSystem.MoveFactorX;
         swerveAmount = Mathf.Clamp(swerveAmount, -maxSwerveAmount, maxSwerveAmount);
-        transform.Translate(swerveAmount, 0, 0);
+        transform.Translate(swerveAmount, 0, forwardSpeed*Time.deltaTime);
 
     }
 }

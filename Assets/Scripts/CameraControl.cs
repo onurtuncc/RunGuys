@@ -9,7 +9,8 @@ public class CameraControl : MonoBehaviour
     void Start()
     {
         //getting players transform
-        target = GameObject.FindWithTag("Player").transform;
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+        
         offset = transform.position;
     }
 
@@ -17,8 +18,12 @@ public class CameraControl : MonoBehaviour
     void LateUpdate()
     {
         //Following player along
-        newPos = target.position + offset;
-        transform.position=Vector3.Lerp(transform.position, newPos, lerpSpeed * Time.deltaTime);
+        if (target != null)
+        {
+            newPos = target.position + offset;
+            transform.position = Vector3.Lerp(transform.position, newPos, lerpSpeed * Time.deltaTime);
+        }
+        
         
     }
 }
