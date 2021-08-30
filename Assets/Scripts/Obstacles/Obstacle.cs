@@ -1,14 +1,21 @@
 ﻿using DG.Tweening;
 using System.Collections;
 using UnityEngine;
+using Zenject;
+
 public abstract class Obstacle : MonoBehaviour
 {
-    
+    private ILevelManager levelManager;
+    [Inject]
+    public void Setup(ILevelManager levelManager)
+    {
+        this.levelManager = levelManager;
+    }
     public void KillPlayer()
     {
-        Debug.Log("Player is dead");
-        LevelManager.Instance.EndLevel();
-        
+        Debug.Log("Level Lost");
+        levelManager.LevelLost();
+
     }
     public void PushPlayer(Vector3 pushPos,float pushForce=0f)
     {

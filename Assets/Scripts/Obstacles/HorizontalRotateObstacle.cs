@@ -14,6 +14,7 @@ public class HorizontalRotateObstacle : Obstacle, IObstacle
     public void interact()
     {
         base.KillPlayer();
+       
     }
     
 }

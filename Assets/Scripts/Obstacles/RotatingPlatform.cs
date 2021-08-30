@@ -8,7 +8,7 @@ public class RotatingPlatform : MonoBehaviour
     private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.tag != "Player") return;
-    
+        //Move player alongside the platform
         collision.transform.position += Vector3.left*rotateSpeed*Time.deltaTime*0.2f;
     }
 

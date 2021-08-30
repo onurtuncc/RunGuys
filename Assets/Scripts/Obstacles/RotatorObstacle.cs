@@ -25,6 +25,7 @@ public class RotatorObstacle : Obstacle, IObstacle
         Debug.Log(forceVector);
         base.PushPlayer(forceVector, 1);
         forward = 1f;
+        
 
     }
     
