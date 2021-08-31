@@ -23,5 +23,6 @@ public class MovementController : MonoBehaviour
         transform.Translate(swerveAmount, 0, movementManager.GetForwardSpeed()*Time.deltaTime);
 
     }
+
     
 }

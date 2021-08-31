@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-public interface IMovementManager
+﻿public interface IMovementManager
 {
     void StopMovement();
     void ContinueMovement();

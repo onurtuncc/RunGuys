@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Zenject;
 
 public interface IAnimationManager
 {
@@ -6,7 +7,9 @@ public interface IAnimationManager
 }
 public class AnimationManager : IAnimationManager
 {
-    private Animator playerAnimator=GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Animator>();
+    
+    [Inject]
+    private Animator playerAnimator;
     public void PlayAnimation(string animation)
     {
         if (playerAnimator == null) return;

@@ -1,4 +1,5 @@
 using UnityEngine;
+using Zenject;
 
 public class CameraControl : MonoBehaviour
 {
@@ -6,6 +7,7 @@ public class CameraControl : MonoBehaviour
     private Vector3 offset;
     private Vector3 newPos;
     [SerializeField]private float lerpSpeed=3f;
+  
     void Start()
     {
         //getting players transform

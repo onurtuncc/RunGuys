@@ -7,8 +7,9 @@ public class RotatorObstacle : Obstacle, IObstacle
     [SerializeField]private float rotateSpeed = 200f;
     //To push player in the right z direction
     private float forward=1f;
+    private float pushForce=12f;
     //Push z direction amount
-    private float pushPlayerForce = 8f;
+    private float pushVerticalForce = 1f;
     
     private void Update()
     {
@@ -21,9 +22,9 @@ public class RotatorObstacle : Obstacle, IObstacle
         {
             forward = -forward;
         }
-        var forceVector = new Vector3(Mathf.Tan((90-transform.rotation.eulerAngles.y)*Mathf.Deg2Rad), 0, transform.position.z+pushPlayerForce*forward);
-        Debug.Log(forceVector);
-        base.PushPlayer(forceVector, 1);
+        //var forceVector = new Vector3(Mathf.Tan((90-transform.rotation.eulerAngles.y)*Mathf.Deg2Rad), 0, transform.position.z+pushPlayerForce*forward);
+        var forceVector = new Vector3(Mathf.Tan((90 - transform.rotation.eulerAngles.y) * Mathf.Deg2Rad), 0, pushVerticalForce*forward);
+        base.PushPlayer(forceVector, pushForce);
         forward = 1f;
         
 

@@ -1,16 +1,24 @@
 ﻿using UnityEngine;
-
 public class RotatingPlatform : MonoBehaviour
 {
     [SerializeField] private float rotateSpeed = 100f;
     [SerializeField] private bool turnLeft = true;
     
-    private void OnCollisionStay(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag != "Player") return;
-        //Move player alongside the platform
-        collision.transform.position += Vector3.left*rotateSpeed*Time.deltaTime*0.2f;
+        if (collision.gameObject.tag == "Player" )
+        {
+            Debug.Log("On it");
+            //Move player alongside the platform
+            
+            collision.rigidbody.AddForce(Vector3.left * rotateSpeed,ForceMode.Acceleration);
+
+        }
+        
+        
     }
+    
+
 
     // Start is called before the first frame update
     void Start()
@@ -19,8 +27,10 @@ public class RotatingPlatform : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         transform.Rotate(new Vector3(0, 0, Time.deltaTime * rotateSpeed));
+
     }
+    
 }

@@ -6,21 +6,26 @@ using Zenject;
 public abstract class Obstacle : MonoBehaviour
 {
     private ILevelManager levelManager;
+    private Rigidbody playerRb;
     [Inject]
-    public void Setup(ILevelManager levelManager)
+    public void Setup(ILevelManager levelManager,Rigidbody playerRb)
     {
         this.levelManager = levelManager;
+        this.playerRb = playerRb;
     }
     public void KillPlayer()
     {
-        Debug.Log("Level Lost");
-        levelManager.LevelLost();
+        Debug.Log("Level Starts Again");
+        levelManager.ContinueLevelFromStart();
 
     }
     public void PushPlayer(Vector3 pushPos,float pushForce=0f)
     {
-        var playerT = GameObject.FindGameObjectWithTag("Player").transform;
-        playerT.DOMove(pushForce * pushPos,1f);
+        //Alternative
+        //var playerT = GameObject.FindGameObjectWithTag("Player").transform;
+        //playerT.DOMove(pushForce * pushPos,1f);
+        Debug.Log(playerRb.velocity);
+        playerRb.AddForce(pushPos * pushForce, ForceMode.Impulse);
        
 
     }
