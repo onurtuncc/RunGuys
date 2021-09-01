@@ -17,7 +17,6 @@ public abstract class Obstacle : MonoBehaviour
     {
         Debug.Log("Level Starts Again");
         levelManager.ContinueLevelFromStart();
-
     }
     public void PushPlayer(Vector3 pushPos,float pushForce=0f)
     {

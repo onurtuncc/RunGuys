@@ -7,6 +7,7 @@ TagManager:
   - Obstacle
   - Wall
   - Opponent
+  - Ground
   layers:
   - Default
   - TransparentFX
