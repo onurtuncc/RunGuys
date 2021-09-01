@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using TMPro;
-
+using UnityEngine.SceneManagement;
 public class PaintBrush : MonoBehaviour
 {
     public GameObject brush;
     [SerializeField] private Transform brushParent;
     [SerializeField] private TMP_Text percentageText;
+    [SerializeField] private GameObject completedPanel;
     private float brushSize = 0.25f;
     private int percentage = 0;
     private string displayText = "%{0} Paınted";
@@ -29,7 +30,10 @@ public class PaintBrush : MonoBehaviour
                     percentage += 1;
                     percentageText.text = string.Format(displayText, percentage);
                     hit.collider.gameObject.layer = 0;
-                    Debug.Log(percentage);
+                    if (percentage == 100)
+                    {
+                        completedPanel.SetActive(true);
+                    }
                     
                 }
                 var paint = Instantiate(brush, hit.point + Vector3.up * 0.1f, Quaternion.Euler(-90,0,0), brushParent);
@@ -37,6 +41,10 @@ public class PaintBrush : MonoBehaviour
                 paint.transform.localPosition -= Vector3.forward * (hit.collider.transform.position.z-brushParent.position.z);
             }
         }
+    }
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     
     

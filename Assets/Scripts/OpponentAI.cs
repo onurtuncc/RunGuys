@@ -7,6 +7,7 @@ public class OpponentAI : MonoBehaviour
     private NavMeshAgent agent;
     private Vector3 startPoint;
     private Animator opponentAnimator;
+    private bool hasReachedEnd = false;
     // Start is called before the first frame update
     void Awake()
     {
@@ -18,8 +19,11 @@ public class OpponentAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (hasReachedEnd) return;
         agent.destination = endingTransform.position;
-        
+
+
+
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -29,7 +33,14 @@ public class OpponentAI : MonoBehaviour
         }
         if (collision.gameObject.tag == "Finish")
         {
+            agent.isStopped = true;
+            hasReachedEnd = true;
+            agent.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            agent.transform.rotation = Quaternion.Euler(0, 180, 0);
             opponentAnimator.SetTrigger("winTrigger");
+            agent.transform.position = startPoint + Vector3.forward * (endingTransform.position.z+8f);
+            
+            
         }
     }
 }

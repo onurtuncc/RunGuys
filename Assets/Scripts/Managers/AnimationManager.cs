@@ -16,8 +16,9 @@ public class AnimationManager : IAnimationManager
         if (animation == "Win")
         {
             playerAnimator.SetTrigger("winTrigger");
-
         }
         else if (animation == "Death") playerAnimator.SetTrigger("deadTrigger");
+ 
+        
     }
 }

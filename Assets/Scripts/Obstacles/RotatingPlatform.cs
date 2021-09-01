@@ -6,7 +6,7 @@ public class RotatingPlatform : MonoBehaviour
     
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Player" )
+        if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Opponent")
         {
             Debug.Log("On it");
             //Move player alongside the platform

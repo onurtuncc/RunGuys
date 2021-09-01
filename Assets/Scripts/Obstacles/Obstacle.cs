@@ -7,11 +7,13 @@ public abstract class Obstacle : MonoBehaviour
 {
     private ILevelManager levelManager;
     private Rigidbody playerRb;
+  
     [Inject]
     public void Setup(ILevelManager levelManager,Rigidbody playerRb)
     {
         this.levelManager = levelManager;
         this.playerRb = playerRb;
+        
     }
     public void KillPlayer()
     {

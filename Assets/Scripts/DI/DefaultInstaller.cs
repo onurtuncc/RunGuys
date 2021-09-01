@@ -16,6 +16,7 @@ public class DefaultInstaller : MonoInstaller
         Container.Bind<Animator>().FromComponentOn(playerModel).AsSingle();
         Container.Bind<MovementController>().FromComponentOn(player).AsSingle();
         Container.Bind<Rigidbody>().FromComponentOn(player).AsSingle();
-
+        
+      
     }
 }

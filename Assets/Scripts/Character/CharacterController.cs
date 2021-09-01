@@ -2,11 +2,16 @@
 using Zenject;
 public class CharacterController : MonoBehaviour
 {
+    
     private ILevelManager levelManager;
     [Inject]
     public void Setup(ILevelManager levelManager)
     {
         this.levelManager = levelManager;
+    }
+    private void Start()
+    {
+        
     }
     private void OnCollisionEnter(Collision collision)
     {
