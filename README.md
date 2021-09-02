@@ -1,2 +1,2 @@
 # RunGuys
-Unity 3D Platform Game that looks like fall guys.
+Unity 3D Platform Game with AI opponents and a wall you can paint!
